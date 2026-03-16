@@ -1,0 +1,42 @@
+# 请将你的 Ghostty 配置放到这个文件中（由本仓库管理）。
+# 如果你当前机器已有配置，可先执行：
+#   cp "$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty" "$(pwd)/ghostty/config.ghostty"
+term=xterm-256color
+clipboard-read = allow
+clipboard-write = allow
+
+theme = Spacedust 
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 15
+bold-is-bright = true
+# macos-non-native-fullscreen = true
+shell-integration = fish 
+shell-integration-features = no-cursor
+
+macos-option-as-alt = left
+# macos-titlebar-style = hidden
+fullscreen = false
+window-width=220
+window-height=70
+# 默认复制选中的文本
+copy-on-select = clipboard
+
+cursor-color = EBE2EB
+cursor-text = ffffff
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+# 配置图标
+macos-icon = glass
+
+
+# 使用默认文本编辑器进行搜索
+# 以下两条配置会把完整的窗口文本信息输出到文本编辑器
+# 将当前的窗口回滚文件（不包含当前屏幕文本信息）使用默认文本编辑器打开
+keybind = command+f=write_scrollback_file:open
+# 将当前屏幕文本信息使用默认文本编辑器打开
+keybind = command+f=write_screen_file:open
+# command + <- 切换上一个窗口
+keybind = command+left=previous_tab
+# command + -> 切换下一个窗口
+keybind = command+right=next_tab

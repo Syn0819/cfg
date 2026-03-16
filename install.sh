@@ -51,6 +51,30 @@ install_nvim() {
     echo "✅ Neovim 配置安装完成！"
 }
 
+install_ghostty() {
+    echo "========== 安装 Ghostty 配置 =========="
+    GHOSTTY_DIR="$HOME/Library/Application Support/com.mitchellh.ghostty"
+    GHOSTTY_TARGET="$GHOSTTY_DIR/config.ghostty"
+    mkdir -p "$GHOSTTY_DIR"
+
+    if [ ! -f "$DIR/ghostty/config.ghostty" ]; then
+        echo "未找到仓库内配置文件：$DIR/ghostty/config.ghostty"
+        echo "请先参考：cp \"$GHOSTTY_TARGET\" \"$DIR/ghostty/config.ghostty\""
+        return 1
+    fi
+
+    # 备份旧配置（如果存在且不是软链接）
+    if [ -f "$GHOSTTY_TARGET" ] && [ ! -L "$GHOSTTY_TARGET" ]; then
+        echo "发现旧的 config.ghostty，正在备份到 config.ghostty.bak..."
+        mv "$GHOSTTY_TARGET" "$GHOSTTY_TARGET.bak"
+    fi
+
+    echo "正在创建 config.ghostty 软链接..."
+    ln -sf "$DIR/ghostty/config.ghostty" "$GHOSTTY_TARGET"
+
+    echo "✅ Ghostty 配置安装完成！"
+}
+
 # 解析参数并执行
 case "${1:-all}" in
     tmux)
@@ -59,15 +83,21 @@ case "${1:-all}" in
     nvim)
         install_nvim
         ;;
+    ghostty)
+        install_ghostty
+        ;;
     all)
         install_tmux
         echo ""
         install_nvim
+        echo ""
+        install_ghostty
         ;;
     -h|--help)
-        echo "用法: $0 [tmux|nvim|all]"
+        echo "用法: $0 [tmux|nvim|ghostty|all]"
         echo "  tmux  - 仅安装 tmux 配置"
         echo "  nvim  - 仅安装 Neovim 配置"
+        echo "  ghostty - 仅安装 Ghostty 配置
         echo "  all   - 安装全部配置（默认）"
         ;;
     *)
