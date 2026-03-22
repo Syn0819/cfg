@@ -14,6 +14,7 @@ require('mason-lspconfig').setup({
         'pylsp', 
         'lua_ls', 
     },
+    automatic_enable = false,
 })
 
 -- Set different settings for different languages' LSP
