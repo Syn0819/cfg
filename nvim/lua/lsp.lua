@@ -69,8 +69,8 @@ lspconfig.pylsp.setup({
 lspconfig.clangd.setup({
 	on_attach = on_attach,
 })
--- lspconfig.gopls.setup({
-    -- cmd = { vim.fn.stdpath("data") .. "mason/bin/gopls" }, -- 手动指定
-	-- on_attach = on_attach,
--- })
+lspconfig.gopls.setup({
+    cmd = { vim.fn.stdpath("data") .. "/mason/bin/gopls" }, -- 手动指定
+	on_attach = on_attach,
+})
 

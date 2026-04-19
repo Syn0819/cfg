@@ -1,0 +1,5 @@
+# 默认编辑器设置为nvim
+[opener]
+edit = [
+  { run = 'nvim "$@"', block = true, desc = "Neovim" },
+]

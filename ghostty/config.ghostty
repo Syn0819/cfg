@@ -40,3 +40,5 @@ keybind = command+f=write_screen_file:open
 keybind = command+left=previous_tab
 # command + -> 切换下一个窗口
 keybind = command+right=next_tab
+# option + q, quick terminal
+keybind = global:alt+q=toggle_quick_terminal
